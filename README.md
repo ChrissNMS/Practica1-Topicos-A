@@ -8,7 +8,7 @@
 Este proyecto analiza y compara el rendimiento del **Producto Punto** implementado en **Octave** y **C**. El objetivo principal es observar la eficiencia de las bibliotecas de alto rendimiento (**CBLAS/OpenBLAS**) frente a implementaciones manuales y técnicas de optimización como el **Loop Unrolling**.
 
 ## 2. Estructura del Proyecto
-
+```text
 ├── 1_Producto_Punto/
 │   ├── dot.m               # Función manual (ciclo for) en Octave
 │   ├── dot_test.m          # Benchmark Octave (Operador * vs manual)
@@ -34,7 +34,7 @@ Este proyecto analiza y compara el rendimiento del **Producto Punto** implementa
 ├── images/                 # Gráficas generadas (Figuras 1 a 6)
 ├── plot_producto_punto.gp  # Script de Gnuplot para todas las operaciones
 └── Makefile                # Automatización de compilación y limpieza
-
+```
 ## 3. Instrucciones de Ejecución
 
 Generación de Gráficas:
