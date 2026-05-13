@@ -34,7 +34,7 @@ Este proyecto analiza y compara el rendimiento del **Producto Punto** implementa
 ├── images/                 # Gráficas generadas (Figuras 1 a 6)
 ├── plot_producto_punto.gp  # Script de Gnuplot para todas las operaciones
 └── Makefile                # Automatización de compilación y limpieza
-
+```
 ## 3. Instrucciones de Ejecución
 
 Generación de Gráficas:
