@@ -1,24 +1,24 @@
-# Configuración base con 'enhanced' para superíndices
 set term png enhanced size 800,600
 set grid
-set logscale x 2
 set key left top
-set xlabel "size (n)"
-set ylabel "time (seconds)"
+set xlabel "Matrix size (n)"
+set ylabel "Time (seconds)"
 
-# Etiquetas fijas para el eje X (Rango más pequeño)
-set xtics ("2^{7}" 2**7, "2^{8}" 2**8, "2^{9}" 2**9, "2^{10}" 2**10, "2^{11}" 2**11)
+set logscale x 2
+set format x "2^{%L}"
+set xtics (256, 512, 1024)
+unset logscale y
 
-# --- Generar Figura 3 ---
+# --- Figura 3 ---
 set output "images/Figura3_MatrizMatriz.png"
-set title "Octave operator vs cblas_dgemm function"
-plot "3_Matriz_Matriz/mm.dat" using 1:3 title "Octave" with linespoints, \
-     "3_Matriz_Matriz/mm_cblas.dat" using 1:2 title "Cblas" with linespoints
+set yrange [0:0.25]
+plot "3_Matriz_Matriz/mm.dat" using 1:3 title "Octave" with linespoints lw 2, \
+     "3_Matriz_Matriz/mm_cblas.dat" using 1:2 title "Cblas" with linespoints lw 2
 
-# --- Generar Figura 6 ---
+# --- Figura 6: COMPARATIVA REAL ---
 set output "images/Figura6_MM_Row_Column.png"
-set title "CBLAS vs C Row Major vs C Column Major (Matriz-Matriz)"
-set logscale y 10 
-plot "3_Matriz_Matriz/mm_fase2.dat" using 1:2 title "Cblas" with linespoints lw 2, \
-     "3_Matriz_Matriz/mm_fase2.dat" using 1:3 title "C Row Major" with linespoints lw 2, \
-     "3_Matriz_Matriz/mm_fase2.dat" using 1:4 title "C Column Major" with linespoints lw 2
+set yrange [0:8]
+# Saltamos la columna basura (usamos 1, 3, 4 y 5)
+plot "3_Matriz_Matriz/mm_fase2.dat" using 1:3 title "Cblas" with linespoints lw 2 lc rgb "dark-green", \
+     "3_Matriz_Matriz/mm_fase2.dat" using 1:4 title "C Row Major (IKJ)" with linespoints lw 2 lc rgb "red", \
+     "3_Matriz_Matriz/mm_fase2.dat" using 1:5 title "C Column Major (Ineficiente)" with linespoints lw 2 lc rgb "blue"
